@@ -11,22 +11,29 @@
 int arg_err()
 {
     fprintf(stderr, "Wrong number of arguments\n");
-    putc(PROG_ERR, stdout);
-    return -1;
+    // putc(PROG_ERR, stdout);
+    return ER_ARG;
 }
 
 int cmd_err()
 {
     fprintf(stderr, "Wrong command\n");
-    putc(PROG_ERR, stdout);
-    return -2;
+    // putc(PROG_ERR, stdout);
+    return ER_CMD;
 }
 
 int fun_err()
 {
     fprintf(stderr, "No match found\n");
-    putc(FUN_ERR, stdout);
-    return 0;
+    // putc(FUN_ERR, stdout);
+    return ER_FUN;
+}
+
+int sys_err(char* msg)
+{
+    if(msg)
+        perror(msg);
+    return ER_SYS;
 }
 
 int chk_dir(char* dir_path)

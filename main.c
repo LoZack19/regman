@@ -21,11 +21,10 @@ int main(int argc, char* argv[])
     reg = fopen(REGISTER, "r"); // il file deve già esistere in /usr/share/zpm e dev'essre modificabile da tutti
     if(!reg)
     {
-        perror("Failed to open file");
-        putc(PROG_ERR, stdout);
-        exit(-1);
+        return sys_err("Failed to read the file");
     }
     
+    // load the file into the buffer
     buffer = loadfile(reg);
     fclose(reg);
 

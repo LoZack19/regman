@@ -28,11 +28,18 @@
 #define RD          0
 #define WR          1
 
+// errors
+#define ER_ARG      -1
+#define ER_CMD      -2
+#define ER_FUN      -3
+#define ER_SYS      -4
+
 #include "regrw.h"
 
 int arg_err();  // wrong number of arguments
 int cmd_err();  // wrong command
 int fun_err();  // error in function
+int sys_err(char* msg);     // error in preparation tasks
 int chk_dir(char* dir);     // check if dir exists
 int arg_chk(int argc, char* argv[]);    // check correct number of arguments
 
