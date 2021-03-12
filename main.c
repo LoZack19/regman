@@ -33,8 +33,10 @@ int main(int argc, char* argv[])
     if(_streq(argv[1], FPKG, FPKG_LEN))
     {
         char* out = selline(buffer, _fpkg(buffer, argv[2]), '\n');
-        if(!out)
+        if(!out) {
+            free(buffer);
             return fun_err();
+        }   
 
         fputs(out, stdout);
         free(out);
@@ -44,8 +46,11 @@ int main(int argc, char* argv[])
         int* ver;
 
         ver = _fver(buffer, argv[2]);
-        if(!ver)
+        if(!ver){
+            free(buffer);
             return fun_err();
+        }
+            
         
         printf("%d %d", ver[0], ver[1]);
     }
@@ -57,20 +62,21 @@ int main(int argc, char* argv[])
     {
         buffer = _rmpkg(&buffer, argv[2]);
         
-        if(!buffer)
+        if(!buffer) {
+            free(buffer);
             return fun_err();
-        else
-            putc(SUCCESS, stdout);
+        }
+            
         
         status = WR;
     }
     else if(_streq(argv[1], WRITE, WRITE_LEN))
     {
         _write(buffer, argv[2], atoi(argv[3]), atoi(argv[4]));
-        putc(SUCCESS, stdout);
         status = WR;
     }
 
+    // write changes if any
     if(status == WR)
     {
         reg = fopen(REGISTER, "w");
