@@ -50,7 +50,6 @@ int main(int argc, char* argv[])
             free(buffer);
             return fun_err();
         }
-            
         
         printf("%d %d", ver[0], ver[1]);
     }
@@ -66,7 +65,6 @@ int main(int argc, char* argv[])
             free(buffer);
             return fun_err();
         }
-            
         
         status = WR;
     }
