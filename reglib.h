@@ -36,11 +36,11 @@
 
 #include "regrw.h"
 
-int arg_err();  // wrong number of arguments
-int cmd_err();  // wrong command
-int fun_err();  // error in function
-int sys_err(char* msg);     // error in preparation tasks
-int chk_dir(char* dir);     // check if dir exists
-int arg_chk(int argc, char* argv[]);    // check correct number of arguments
+int arg_err();  // implausible number of arguments
+int cmd_err();  // command doesn't exist 
+int fun_err();  // function failed to execute its task 
+int sys_err();  // some preparation task failed
+int chk_dir(char* dir);  // check if dir exists
+int arg_chk(int argc, char* argv[]); // check correct number of arguments
 
 #endif

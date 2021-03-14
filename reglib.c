@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include <sys/types.h>
 #include <dirent.h>
 #include <sys/stat.h>
@@ -8,33 +5,17 @@
 
 #include "reglib.h"
 
-int arg_err()
-{
-    fprintf(stderr, "Wrong number of arguments\n");
-    // putc(PROG_ERR, stdout);
-    return ER_ARG;
-}
+// Wrong number of arguments
+int arg_err() { return ER_ARG; }
 
-int cmd_err()
-{
-    fprintf(stderr, "Wrong command\n");
-    // putc(PROG_ERR, stdout);
-    return ER_CMD;
-}
+// Wrong command
+int cmd_err() { return ER_CMD; }
 
-int fun_err()
-{
-    fprintf(stderr, "No match found\n");
-    // putc(FUN_ERR, stdout);
-    return ER_FUN;
-}
+// Error in function
+int fun_err() { return ER_FUN; }
 
-int sys_err(char* msg)
-{
-    if(msg)
-        perror(msg);
-    return ER_SYS;
-}
+// Error in preparation task
+int sys_err(char* msg) { return ER_SYS; }
 
 int chk_dir(char* dir_path)
 {
