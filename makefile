@@ -18,10 +18,14 @@ reglib.o: reglib.c
 main.o: main.c
 	$(CC) -c main.c -o main.o
 
+
 clean:
 	rm *.o
 
 configure:
+	git clone https://github.com/LoZack19/Tokens
+
+postconfigure:
 	sudo mkdir /usr/share/zpm
 	sudo touch /usr/share/zpm/zpm-reg
 	sudo chmod a+rw /usr/share/zpm/zpm-reg
