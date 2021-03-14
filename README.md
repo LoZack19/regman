@@ -25,7 +25,7 @@ rmpkg [NAME] - remove package by name
 `-3` if a function failed to execute its task  
 `-4` if some preparation task failed
 
-# File
+# FILE
 The file on which the program works is `/usr/share/zpm/zpm-reg`. The format resembles the following example:
 ```
 name:ver.sub
@@ -35,5 +35,19 @@ name:ver.sub
 ```
 *Note: the file must end in a newline.*
 
-# Author
-Written by Giovanni Zaccaria.
+# INSTALLATION
+To install regman correctly you need to give the following commands in the order they appear:
+```bash
+$ make              # compile
+$ make clean        # (optional) clear object files
+$ make configure    # prepare the enviroment
+$ make install      # install regman in /usr/bin
+```
+
+Whenever you need to uninstall the software run:
+```bash
+$ sudo make uninstall
+```
+
+# AUTHOR
+Written by **Giovanni Zaccaria**.

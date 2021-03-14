@@ -21,11 +21,10 @@ main.o: main.c
 clean:
 	rm *.o
 
-# Run as root
 configure:
-	mkdir /usr/share/zpm
-	touch /usr/share/zpm/zpm-reg
-	chmod a+rw /usr/share/zpm/zpm-reg
+	sudo mkdir /usr/share/zpm
+	sudo touch /usr/share/zpm/zpm-reg
+	sudo chmod a+rw /usr/share/zpm/zpm-reg
 
 install:
 	sudo install regman /usr/bin
