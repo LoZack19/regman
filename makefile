@@ -1,26 +1,22 @@
-CC      = /usr/bin/gcc
+CC=gcc
+CFLAGS=-O2
+#debug flags:-g -Wall
+OBJ=filelib.o regrd.o regwr.o reglib.o main.o
+TARGET=regman
 
-regman: filelib.o regrd.o regwr.o reglib.o main.o
-	$(CC) filelib.o regrd.o regwr.o reglib.o main.o -o regman
+all: configure regman
 
 filelib.o: Tokens/filelib.c
-	$(CC) -c Tokens/filelib.c -o filelib.o
+	$(CC) $(CFLAGS) -c Tokens/filelib.c -o filelib.o
 
-regrd.o: regrd.c
-	$(CC) -c regrd.c -o regrd.o
+%.o: %.c
+	$(CC) $(CFLAGS) -c $^
 
-regwr.o: regwr.c
-	$(CC) -c regwr.c -o regwr.o
-
-reglib.o: reglib.c
-	$(CC) -c reglib.c -o reglib.o
-
-main.o: main.c
-	$(CC) -c main.c -o main.o
-
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	rm *.o
+	rm -rf *.o regman Tokens/
 
 configure:
 	git clone https://github.com/LoZack19/Tokens
@@ -34,7 +30,6 @@ install:
 	sudo install regman /usr/bin
 	rm regman
 
-# Run as root
 uninstall:
-	rm -rf /usr/share/zpm
-	rm /usr/bin/regman
+	sudo rm -rf /usr/share/zpm
+	sudo rm /usr/bin/regman

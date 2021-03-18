@@ -38,7 +38,6 @@ name:ver.sub
 # INSTALLATION
 To install regman correctly you need to give the following commands in the order they appear:
 ```bash
-$ make configure        # prepare the enviroment for compiling
 $ make                  # compile
 $ make clean            # (optional) clear object files
 $ make postconfigure    # prepare the enviroment for regman
@@ -47,7 +46,7 @@ $ make install          # install regman in /usr/bin
 
 Whenever you need to uninstall the software run:
 ```bash
-$ sudo make uninstall
+$ make uninstall
 ```
 
 # AUTHOR
