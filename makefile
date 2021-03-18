@@ -1,16 +1,14 @@
 CC=gcc
 CFLAGS=-O2
-#debug flags:-g -Wall
-OBJ=filelib.o regrd.o regwr.o reglib.o main.o
+#-g -Wall
+
+OBJ=Tokens/filelib.o regrd.o regwr.o reglib.o main.o
 TARGET=regman
 
 all: configure regman
 
-filelib.o: Tokens/filelib.c
-	$(CC) $(CFLAGS) -c Tokens/filelib.c -o filelib.o
-
 %.o: %.c
-	$(CC) $(CFLAGS) -c $^
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(TARGET): $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
